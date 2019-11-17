@@ -76,25 +76,4 @@ class BookSpiderSpider(scrapy.Spider):
                         for i in range(2, page_num + 1):
                             next_page_url = 'http://category.dangdang.com/pg' + str(i) + '-' + response.url[-24:]
                             yield Request(url=next_page_url, callback=self.parse, encoding='utf-8')
-
-    # def get_category_23(self,response):
-    #     categories = response.xpath('//div[@id="navigation"]//li[@dd_name="分类"]//div[@class="clearfix"]/span/a')
-    #     if categories:
-    #         brandcrumb = response.xpath(
-    #             '//div[@id="breadcrumb"]/div[@class="crumbs_fb_left"]/div[@class="select_frame"]/a/@dd_name').extract()
-    #         if brandcrumb[-1] == "面包屑2级":
-    #             for category in categories:
-    #                 del response.meta['categories'][1:]
-    #                 category_href = category.xpath('./@href').extract()[0]
-    #                 category_url = parse.urljoin('http://category.dangdang.com/', category_href)
-    #                 cur_category = category.xpath('./@title').extract()[0]
-    #                 response.meta['categories'].append(cur_category)
-    #                 yield Request(url=category_url, callback=self.get_category_23, meta={'categories': response.meta['categories']}, encoding='utf-8')
-    #         elif brandcrumb[-1] == "面包屑3级":
-    #             for category in categories:
-    #                 del response.meta['categories'][2:]
-    #                 category_href = category.xpath('./@href').extract()[0]
-    #                 category_url = parse.urljoin('http://category.dangdang.com/', category_href)
-    #                 cur_category = category.xpath('./@title').extract()[0]
-    #                 response.meta['categories'].append(cur_category)
-    #                 yield Request(url=category_url, callback=self.get_category_23, meta={'categories': response.meta['categories']}, encoding='utf-8')
+                            
